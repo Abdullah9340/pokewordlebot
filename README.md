@@ -28,14 +28,13 @@ Stats command ($stats):
 git clone https://github.com/smrahman1/pokewordlebot.git
 cd pokewordlebot 
 
+Create your python environment:
 python3 -m venv venv
 
 For Mac:
 source venv/bin/activate
-
 For Windows:
 venv\Scripts\activate
 
-python3 -m pip install -r requirements.txt
-
-python3 main.py
+To install dependencies and start the bot:
+sh run.sh

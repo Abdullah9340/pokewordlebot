@@ -1,3 +1,9 @@
+"""
+    Authors: Mahfuzur Rahman (m236rahm@uwaterloo.ca), Abdullah Abdullah (a55abdul@uwaterloo.ca)
+    Date: June 2022
+    Description: This is the file runs the discord bot and listens for incoming messages.
+"""
+
 import discord
 import os
 from dotenv import load_dotenv
@@ -27,14 +33,15 @@ async def on_message(message):
             await channel.send(embed = general_embed('You have an ongoing game!'))
             return
         if len(content.split(' ')) > 1:
-            range = content.split(' ')[1]
-            start = int(range[0]) - 1
-            if len(range) > 2:
+            range, start = content.split(' ')[1], int(range[0]) - 1
+            
+            if len(range) > 2: 
                 end = int(range[2])
-            else:
-                end = start+1
-            if start >= 0 and end > 0 and start <= end:
-                store_current_pokemon(author_id, start , end)
+            else: 
+                end = start + 1
+
+            if start >= 0 and end > 0 and start <= end: 
+                store_current_pokemon(author_id, start, end)
             else:
                 flag = True
                 await channel.send(embed = general_embed('Invalid range'))
@@ -48,18 +55,23 @@ async def on_message(message):
             guess = content.split()[1]
             storedInfo = make_guess(author_id, guess)
             result, stats = storedInfo[0], storedInfo[1]
-            if result == -1:
+            # Game not started
+            if result == "Game not started":
                 await channel.send(embed = general_embed('You need to start the game first!'))
-            elif result == 1 :
+            # User guessed correctly and game is won
+            elif result == "Game won":
                 embed = game_won_poke_info(author_id)
                 reset(stats, author_id)
                 await channel.send(embed=embed)
-            elif result == 0:
+            # User guessed incorrectly and game is lost
+            elif result == "Game lost":
                 embed=game_over_poke_info(author_id)
                 reset(stats, author_id)
                 await channel.send(embed=embed)
-            elif result == 3:
+            # Can't find the pokemon the user is guessed
+            elif result == "Pokemon not found":
                 await channel.send(embed = general_embed('Pokemon not found!'))
+            # User guessed a valid pokemon that is not correct
             else:
                 embed = compare_pokemon(author_id, guess)
                 await channel.send(embed=embed)
