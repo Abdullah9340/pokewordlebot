@@ -1,55 +1,59 @@
 import discord
 
-def startEmbed(name, start, end):
+Color = discord.Color
+Embed = discord.Embed
 
-    embed = discord.Embed(
+def start_embed(name, start, end):
+
+    embed = Embed(
         type = "rich",
         title = f"Pokeworlde Start User: {name}!",
-        description = f"**Welcome to pokewordle! Try your best to guess the right pokemon**\n\nThe pokemon you are guessing is between generations [{start}, {end}]\n\nRules:\n-You have **five** guesses, after each guess you will get information \nabout how close you were, try to get it in as few guesses as \npossible!\n\nUse guess to start guessing! Good luck\n\n",
-        color = discord.Color.blue()
+        description = f"""**Welcome to pokewordle! Try your best to guess the right pokemon**\n\n
+                            The pokemon you are guessing is between generations [{start}, {end}]\n\n
+                            Rules:\n-You have **five** guesses, after each guess you will get information \n
+                            about how close you were, try to get it in as few guesses as \npossible!
+                            \n\nUse guess to start guessing! Good luck\n\n
+                        """,
+        color = Color.green()
     )   
-    # embed.set_thumbnail(url="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png")
     embed.set_image(url="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png")
     return embed
 
-def guessedAnswer(guessed, guessedImage, res):
-    embed = discord.Embed(
+def guessed_answer(guessed, guessedImage, res):
+    embed = Embed(
         type = "rich",
         title = f"Wrong Answer!",
         description = res,
-        color = discord.Color.blue()
+        color = Color.blue()
     )   
-    # embed.set_thumbnail(url="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png")
     embed.set_image(url=f"{guessedImage}")
     
     return embed
 
-def gameOver(actual, actualImage):
-    embed = discord.Embed(
+def game_over(actual, actualImage):
+    embed = Embed(
         type = "rich",
         title = f"Gosh darn it! You lost!",
         description = f"**The right answer was {actual} L + RATIO TEST = 1**",
-        color = discord.Color.red()
+        color = Color.red()
     )   
-    # embed.set_thumbnail(url="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png")
     embed.set_image(url=f"{actualImage}")
     
     return embed
 
-def gameWon(actual, actualImage, lives):
-    embed = discord.Embed(
+def game_won(actual, actualImage, lives):
+    embed = Embed(
         type = "rich",
         title = f"You won in {6-lives} guesses!",
         description = f"**The right answer was {actual}, take a shot and celebrate or stay halal mode**",
-        color = discord.Color.green()
+        color = Color.green()
     )
-    # embed.set_thumbnail(url="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/25.png")
     embed.set_image(url=f"{actualImage}")
     
     return embed
 
-def statsEmbed(name,stats):
-    embed = discord.Embed(
+def stats_embed(name,stats):
+    embed = Embed(
         type = "rich",
         title = f"{name}'s Stats",
         description = f"""**Won in 1 guess: {stats[0]} time(s)\n
@@ -59,22 +63,22 @@ def statsEmbed(name,stats):
                             Won in 5 guess: {stats[4]} time(s)\n
                             Losses        : {stats[5]} time(s)\n
                         **""",
-        color = discord.Color.from_rgb(254, 231, 92)
+        color = Color.from_rgb(254, 231, 92)
     )
     embed.set_thumbnail(url=f"https://staticg.sportskeeda.com/editor/2019/12/7347a-15769410112866-800.jpg")
     return embed
 
-def generalEmbed(text):
-    embed = discord.Embed(
+def general_embed(text):
+    embed = Embed(
         type = "rich",
         title = f"{text}",
         description = f"",
-        color = discord.Color.orange()
+        color = Color.orange()
     )
     return embed
 
-def helpEmbed():
-    embed = discord.Embed(
+def help_embed():
+    embed = Embed(
         type = "rich",
         title = "Help",
         description = f""" 
@@ -85,12 +89,6 @@ def helpEmbed():
                         **$guess <pokemon>**\n
                         **$stats** - display your stats\n
                         """,
-        color = discord.Color.from_rgb(255,255,255)
+        color = Color.from_rgb(255,255,255)
     )
     return embed
-
-# start game
-# how to make a guess
-# choose generations
-# stats
-# 5 guesses

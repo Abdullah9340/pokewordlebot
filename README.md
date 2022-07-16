@@ -23,3 +23,19 @@ Guessing Graveler:
 Stats command ($stats):
 
 <img width="352" alt="image" src="https://user-images.githubusercontent.com/72326930/172460877-490141d7-fdbe-46cb-933c-76037f622070.png">
+
+
+git clone https://github.com/smrahman1/pokewordlebot.git
+cd pokewordlebot 
+
+python3 -m venv venv
+
+For Mac:
+source venv/bin/activate
+
+For Windows:
+venv\Scripts\activate
+
+python3 -m pip install -r requirements.txt
+
+python3 main.py
