@@ -24,8 +24,11 @@ Stats command ($stats):
 
 <img width="352" alt="image" src="https://user-images.githubusercontent.com/72326930/172460877-490141d7-fdbe-46cb-933c-76037f622070.png">
 
-<p>git clone https://github.com/smrahman1/pokewordlebot.git
-  
+<h1>How to run and test locally</h1>
+
+```
+git clone https://github.com/smrahman1/pokewordlebot.git
+
 cd pokewordlebot
 
 Create your python environment:
@@ -42,4 +45,5 @@ Need .env and root.crt files to run the bot.
 
 To install dependencies and start the bot:
 sh run.sh
-</p>
+
+```
